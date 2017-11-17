@@ -1,13 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/lib/SarEngine2D/SarEngine2D.js"></script>
+    <script src="js/lib/SarEngine2D/SarEngine2D.Objects.js"></script>
+    <script src="js/lib/sarQuery/sarQuery.js" type="module"></script>
+    <script src="js/lib/HTMLTemplate/ObserveList.js"></script>
+    <script src="js/lib/HTMLTemplate/HTMLTemplate.js"></script>
+    <script src="js/script.js" type="module"></script>
 </head>
+
 <body>
-    <div></div>    
+    <div id="root">
+        <header id="top">
+
+        </header>
+        <main>
+            <div id="fuzzy-variable-wrapper">
+                <template id="fuzzy-variable-template">
+                    <div class="block fuzzy-variable">
+                        <div class="graph"></div>
+                        <div class="property">
+                            <div>
+                                <span>Name:</span>
+                                <p class="fuzzy-var-name textbox" contenteditable="true">{{name}}</p>
+                            </div>
+                            <div class="fuzzy-var-range">
+                                <span>Range:</span>
+                                <span class="fuzzy-var-range-text">
+                                    <span>[</span>
+                                    <input class="fuzzy-var-ramge-from" type="number" value="{{range.from}}">
+                                    <span>, </span>
+                                    <input class="fuzzy-var-ramge-to" type="number" value="{{range.to}}">
+                                    <span>]</span>
+                                </span>
+                            </div>
+                            <div>
+                                <span style="">Map to [0, 1]</span>
+                                <div class="checkbox fuzzy-var-map-to-unit">
+                                    <input type="checkbox">
+                                    <div class="checkbox-bg">
+                                        <div class="checkbox-button"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Fuzzy Sets:</p>
+                            <div class="fuzzy-set-wrapper">
+                                <template class="fuzz-set-template">
+                                    <div class="fuzzy-set" onselectstart="return false">
+                                        <span class="fuzzy-set-name" contenteditable="true">{{name}}</span>
+                                        <span class="fuzzy-set-range">
+                                            <span>[</span>
+                                            <span class="fuzzy-set-from">{{range.from}}</span>
+                                            <span>, </span>
+                                            <span class="fuzzy-set-to">{{range.to}}</span>
+                                            <span>]</span>
+                                            <span class="fuzzy-set-value">0</span>
+                                        </span>
+                                    </div>
+                                </template>
+                                <div class="fuzzy-set-add">+</div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </main>
+        <footer>
+
+        </footer>
+    </div>
 </body>
+
 </html>
