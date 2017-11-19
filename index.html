@@ -10,67 +10,139 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/lib/SarEngine2D/SarEngine2D.js"></script>
     <script src="js/lib/SarEngine2D/SarEngine2D.Objects.js"></script>
-    <script src="js/lib/sarQuery/sarQuery.js" type="module"></script>
+    <script src="js/lib/sarQuery/sarQuery.js"></script>
     <script src="js/lib/HTMLTemplate/ObserveList.js"></script>
     <script src="js/lib/HTMLTemplate/HTMLTemplate.js"></script>
-    <script src="js/script.js" type="module"></script>
+    <script src="js/script.js"></script>
 </head>
 
 <body>
     <div id="root">
         <header id="top">
-
+            <nav>
+                <ul id="top-tabs">
+                    <li class="tab viewing" id="tab-fuzzy-var">Fuzzy Variables</li>
+                    <li class="tab" id="tab-fuzzy-reason">Fuzzy Logic</li>
+                    <li class="tab">Cobo</li>
+                </ul>
+            </nav>
         </header>
-        <main>
-            <div id="fuzzy-variable-wrapper">
-                <template id="fuzzy-variable-template">
-                    <div class="block fuzzy-variable">
-                        <div class="graph"></div>
-                        <div class="property">
-                            <div>
-                                <span>Name:</span>
-                                <p class="fuzzy-var-name textbox" contenteditable="true">{{name}}</p>
-                            </div>
-                            <div class="fuzzy-var-range">
-                                <span>Range:</span>
-                                <span class="fuzzy-var-range-text">
-                                    <span>[</span>
-                                    <input class="fuzzy-var-ramge-from" type="number" value="{{range.from}}">
-                                    <span>, </span>
-                                    <input class="fuzzy-var-ramge-to" type="number" value="{{range.to}}">
-                                    <span>]</span>
-                                </span>
-                            </div>
-                            <div>
-                                <span style="">Map to [0, 1]</span>
-                                <div class="checkbox fuzzy-var-map-to-unit">
-                                    <input type="checkbox">
-                                    <div class="checkbox-bg">
-                                        <div class="checkbox-button"></div>
+        <main id="main-content">
+            <section class="page visible" id="page-fuzzy-variable">
+                <div id="fuzzy-variable-wrapper">
+                    <template id="fuzzy-variable-template">
+                        <div class="block fuzzy-variable">
+                            <div class="graph"></div>
+                            <div class="property">
+                                <div>
+                                    <span>Name:</span>
+                                    <p class="fuzzy-var-name textbox" contenteditable="true">{{name}}</p>
+                                </div>
+                                <div class="fuzzy-var-range">
+                                    <span>Range:</span>
+                                    <span class="fuzzy-var-range-text">
+                                        <span>[</span>
+                                        <input class="fuzzy-var-ramge-from" type="number" value="{{range.from}}">
+                                        <span>, </span>
+                                        <input class="fuzzy-var-ramge-to" type="number" value="{{range.to}}">
+                                        <span>]</span>
+                                    </span>
+                                </div>
+                                <div class="fuzzy-var-map-to-unit-wrapper">
+                                    <span style="">Map to [0, 1]</span>
+                                    <div class="checkbox fuzzy-var-map-to-unit">
+                                        <input type="checkbox">
+                                        <div class="checkbox-bg">
+                                            <div class="checkbox-button"></div>
+                                        </div>
                                     </div>
                                 </div>
+                                <p>Fuzzy Sets:</p>
+                                <div class="fuzzy-set-wrapper">
+                                    <template class="fuzz-set-template">
+                                        <div class="fuzzy-set" style="background-color: {{color}}">
+                                            <span class="fuzzy-set-name" contenteditable="true">{{name}}</span>
+                                            <span class="fuzzy-set-range">
+                                                <span>[</span>
+                                                <span class="fuzzy-set-from">{{range.from}}</span>
+                                                <span>, </span>
+                                                <span class="fuzzy-set-to">{{range.to}}</span>
+                                                <span>]</span>
+                                                <span class="fuzzy-set-value">0</span>
+                                            </span>
+                                        </div>
+                                    </template>
+                                    <div class="fuzzy-set-add">+</div>
+                                </div>
                             </div>
-                            <p>Fuzzy Sets:</p>
-                            <div class="fuzzy-set-wrapper">
-                                <template class="fuzz-set-template">
-                                    <div class="fuzzy-set" onselectstart="return false">
-                                        <span class="fuzzy-set-name" contenteditable="true">{{name}}</span>
-                                        <span class="fuzzy-set-range">
-                                            <span>[</span>
-                                            <span class="fuzzy-set-from">{{range.from}}</span>
-                                            <span>, </span>
-                                            <span class="fuzzy-set-to">{{range.to}}</span>
-                                            <span>]</span>
-                                            <span class="fuzzy-set-value">0</span>
-                                        </span>
-                                    </div>
-                                </template>
-                                <div class="fuzzy-set-add">+</div>
+                        </div>
+                    </template>
+                </div>
+                <div id="button-fuzzy-var-add">+</div>
+            </section>
+            <section class="page visible" id="page-fuzzy-reason">
+                <div class="block" id="fuzzy-reason-rule">
+                    <div id="fuzzy-reason-wrapper">
+                        <div id="fuzzy-reason-graph">
+
+                        </div>
+                        <div id="fuzzy-reason-rules" contenteditable="true">
+
+                        </div>
+                    </div>
+                    <div id="fuzzy-defuzzify-methods">
+                        <div class="defuzzify-method-item" id="defuzzify-mom">
+                            <span class="defuzzify-method-name">MOM</span>
+                            <div class="checkbox switch-defuzzify-mom">
+                                <input type="checkbox">
+                                <div class="checkbox-bg">
+                                    <div class="checkbox-button"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="defuzzify-method-item" id="defuzzify-centroid">
+                            <span class="defuzzify-method-name">Centroid</span>
+                            <div class="checkbox switch-defuzzify-mom">
+                                <input type="checkbox">
+                                <div class="checkbox-bg">
+                                    <div class="checkbox-button"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="defuzzify-method-item" id="defuzzify-maxavg">
+                            <span class="defuzzify-method-name">MaxAvg</span>
+                            <div class="checkbox switch-defuzzify-mom">
+                                <input type="checkbox">
+                                <div class="checkbox-bg">
+                                    <div class="checkbox-button"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </template>
-            </div>
+                </div>
+                <div class="block" id="fuzzy-var-value-wrapper" onselectstart="return false;">
+                    <template id="fuzzy-var-value-template">
+                        <div class="fuzzy-var-value">
+                            <span class="fuzzy-var-value-name">
+                                <span class="name">{{name}}</span>:
+                                <span class="value"></span>
+                            </span>
+                            <span>0</span>
+                            <span class="drag-bar fuzzy-var-value-bar">
+                                <div class="bg">
+                                    <div class="wrapper">
+                                        <div class="button"></div>
+                                    </div>
+                                </div>
+                            </span>
+                            <span>100</span>
+                        </div>
+                    </template>
+                </div>
+            </section>
+            <section class="page">
+
+            </section>
         </main>
         <footer>
 

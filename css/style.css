@@ -118,6 +118,11 @@ input[type="number"]:focus {
 
 .fuzzy-set-name {
     font-weight: bold;
+    padding: 5px 10px;
+}
+.fuzzy-set-name:focus{
+    background-color: white;
+    cursor: text;
 }
 
 .fuzzy-var-range-text {
@@ -151,6 +156,7 @@ input[type="number"]:focus {
     left: 0;
     background: rgba(0,0,0,0.1);
     border-radius: 1000000px;
+    top: 5px;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -174,5 +180,162 @@ input[type="number"]:focus {
 .fuzzy-var-map-to-unit {
     width: 40px;
     height: 20px;
+    margin-left: 20px;
+}
+
+.fuzzy-var-map-to-unit-wrapper {
     margin-top: 20px;
+}
+
+#button-fuzzy-var-add {
+    display: block;
+    font-size: 3em;
+    text-align: center;
+    color: rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+#button-fuzzy-var-add:hover {
+    color: rgba(0,0,0,0.5);
+}
+
+#fuzzy-reason-rule {
+    margin: 30px;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 0px 20px rgba(0,0,0,.1);
+    z-index: 1000;
+}
+
+.tab {
+    align-self: center;
+    padding: 10px 20px;
+    border-bottom: solid 3px transparent;
+    font-weight: bold;
+    color: rgba(0,0,0,.5);
+    cursor: pointer;
+}
+.tab.viewing {
+    border-bottom-color: #03A9F4;
+}
+
+#top-tabs {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin-left: 30px;
+}
+
+#main-content {
+    margin-top: 60px;
+}
+
+.page {
+    display: none;
+}
+.page.visible{
+    display: block;
+}
+
+#fuzzy-reason-graph {
+    height: 400px;
+    flex: auto 1;
+}
+
+#fuzzy-reason-rules {
+    width: 600px;
+    min-height: 400px;
+    padding: 5px 10px;
+    border-left: solid 3px #03A9F4;
+}
+
+#fuzzy-var-value-wrapper {
+    margin: 30px;
+}
+
+.drag-bar {
+    display: inline-flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    vertical-align: middle;
+    height: 1em;
+}
+
+.fuzzy-var-value-bar {
+    width: 500px;
+    margin:0 10px;
+}
+
+.drag-bar > .bg {
+    height: 5px;
+    background-color: #B3E5FC;
+    position: relative;
+    padding-right: 20px;
+}
+
+.drag-bar .button {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    background-color: #03A9F4;
+    border-radius: 100%;
+    top: -8px;
+    left: 100%;
+    box-shadow: 0 0 10px #03A9F4;
+    cursor: pointer;
+}
+
+.fuzzy-var-value {
+    margin-top: 20px;
+}
+
+.fuzzy-var-value-name {
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 30px;
+    width: 12em;
+}
+
+.drag-bar .wrapper {
+    width: 100%;
+    position: relative;
+}
+
+#fuzzy-reason-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    justify-content: center;
+}
+
+#fuzzy-defuzzify-methods .checkbox {
+    height: 20px;
+    width: 40px;
+    margin-left: 20px;
+}
+
+.defuzzify-method-name {
+    display: inline-block;
+    vertical-align: middle;
+    width:6em;
+}
+
+#fuzzy-defuzzify-methods {
+    padding-left: 30px;
+}
+
+.defuzzify-method-item {
+    margin: 10px 0;
 }
